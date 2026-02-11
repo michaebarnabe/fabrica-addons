@@ -1,14 +1,16 @@
-# Fábrica de Addons
+# Fábrica de Addons - Next.js
 
-Uma plataforma simples e minimalista para disponibilizar addons web sem necessidade de autenticação.
+Uma plataforma simples e minimalista para disponibilizar addons web sem necessidade de autenticação. Agora em **Next.js** com deploy automático no **Vercel**.
 
 ## 🎯 Características
 
 - ✅ **Sem Login Necessário** - Acesso público direto aos addons
-- ✅ **Carregamento Dinâmico** - Addons carregados automaticamente da pasta `/addons`
+- ✅ **Carregamento Dinâmico** - Addons carregados automaticamente
 - ✅ **Design Minimalista** - Branco e preto, limpo e profissional
 - ✅ **Responsivo** - Funciona em desktop, tablet e mobile
-- ✅ **Rápido e Leve** - Apenas 2 arquivos include necessários
+- ✅ **Next.js + React** - Framework moderno e rápido
+- ✅ **TypeScript** - Código type-safe
+- ✅ **Deploy Vercel** - Hospedagem gratuita e automática
 
 ## 📦 Addons Disponíveis
 
