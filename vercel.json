@@ -1,5 +1,4 @@
 {
   "buildCommand": "next build",
-  "installCommand": "npm ci",
-  "outputDirectory": ".next/standalone"
+  "installCommand": "npm ci"
 }
