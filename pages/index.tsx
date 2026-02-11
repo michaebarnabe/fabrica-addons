@@ -5,6 +5,7 @@ import { useAOS } from '@/lib/useAOS'
 
 const Home: NextPage = () => {
   useAOS()
+  const addons = getAvailableAddons();
 
   return (
     <>
