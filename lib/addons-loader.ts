@@ -10,6 +10,14 @@ export interface Addon {
 export function getAvailableAddons(): Addon[] {
   const addons: Addon[] = [
     {
+      name: "Bloco de Notas",
+      slug: "bloco-de-notas",
+      description: "Um bloco de notas simples com armazenamento local e busca avançada. Crie, edite e organize suas notas com facilidade.",
+      is_premium: "0",
+      path: "/addons/bloco-de-notas",
+      folder: "bloco-de-notas"
+    },
+    {
       name: "Cortador de Imagens para Carrossel",
       slug: "post-slice-grid",
       description: "Este é um addon que te ajuda no corte de post carrossel contínuo.",
@@ -51,6 +59,8 @@ export function getAvailableAddons(): Addon[] {
 
 export function getAddonIcon(addonName: string): string {
   const iconMap: Record<string, string> = {
+    notas: "bi-sticky",
+    bloco: "bi-sticky",
     vcard: "bi-person-card",
     qr: "bi-qr-code",
     carrossel: "bi-images",
