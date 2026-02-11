@@ -1,0 +1,9 @@
+{
+  "name": "Divisor de Objetivos",
+  "version": "1.0.0",
+  "description": "Divide um grande objetivo em subtarefas menores, salvando no localStorage.",
+  "main": "index.js",
+  "keywords": ["objetivo","tarefas","productivity","localStorage"],
+  "author": "Fabrica de Add-ons",
+  "license": "MIT"
+}
