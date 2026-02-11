@@ -1,9 +1,10 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import { getAvailableAddons, getAddonIcon } from '@/lib/addons-loader'
+import { useAOS } from '@/lib/useAOS'
 
 const Home: NextPage = () => {
-  const addons = getAvailableAddons();
+  useAOS()
 
   return (
     <>
@@ -81,9 +82,6 @@ const Home: NextPage = () => {
           <small>Todos os direitos reservados.</small>
         </div>
       </footer>
-
-      <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-      <script>{`if (typeof window !== 'undefined') { AOS.init({ duration: 800 }); }`}</script>
     </>
   )
 }
