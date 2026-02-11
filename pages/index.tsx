@@ -80,9 +80,7 @@ const Home: NextPage = () => {
                       <i className={`bi ${getAddonIcon(addon.name)}`}></i>
                     </div>
                     <h5>{addon.name}</h5>
-                    {addon.slug !== 'divisor-de-objetivos' && (
-                      <p>{addon.description}</p>
-                    )}
+                    <p>{addon.description}</p>
                     <span className="addon-button">Usar Addon →</span>
                   </a>
                 ))}
