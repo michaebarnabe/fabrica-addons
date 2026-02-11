@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Divisor de Objetivos</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <div class="app">
+    <header class="app-header">
+      <h1>Divisor de Objetivos</h1>
+    </header>
+
+    <main class="container">
+      <section class="block">
+        <label for="goal-input">Objetivo principal</label>
+        <textarea id="goal-input" placeholder="Descreva aqui seu objetivo principal..."></textarea>
+        <div class="actions-row">
+          <button id="generate-btn">Gerar estrutura</button>
+          <button id="save-btn">Salvar</button>
+          <button id="clear-btn" class="danger">Limpar</button>
+        </div>
+      </section>
+
+      <section class="block">
+        <h2>Subtarefas</h2>
+        <div id="subtasks-container"></div>
+        <div class="add-row">
+          <input id="new-subtask-input" placeholder="Nova subtarefa">
+          <button id="add-subtask-btn">Adicionar</button>
+        </div>
+      </section>
+
+      <section class="block">
+        <h2>Subtarefas (Visão)</h2>
+        <div id="subtasks-table-container" class="table-wrap"></div>
+      </section>
+    </main>
+
+    <script type="module" src="./js/main.js"></script>
+  </div>
+</body>
+</html>

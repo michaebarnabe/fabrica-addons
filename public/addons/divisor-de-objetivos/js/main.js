@@ -1,6 +1,6 @@
 // main.js — orquestra a interface e integra storage + ui
 import { saveState, loadState, clearState } from './storage.js';
-import { renderSubtasks, updateRawData } from './ui.js';
+import { renderSubtasks, renderSubtasksTable } from './ui.js';
 
 const goalInput = document.getElementById('goal-input');
 const generateBtn = document.getElementById('generate-btn');
@@ -9,7 +9,7 @@ const clearBtn = document.getElementById('clear-btn');
 const subtasksContainer = document.getElementById('subtasks-container');
 const addSubtaskBtn = document.getElementById('add-subtask-btn');
 const newSubtaskInput = document.getElementById('new-subtask-input');
-const rawData = document.getElementById('raw-data');
+const subtasksTableContainer = document.getElementById('subtasks-table-container');
 
 let state = {
   goal: '',
@@ -29,7 +29,7 @@ function refreshUI() {
     onChange: (value, idx) => {
       state.subtasks[idx] = value;
       saveState(state);
-      updateRawData(rawData, state);
+      refreshUI();
     },
     onRemove: (idx) => {
       state.subtasks.splice(idx, 1);
@@ -37,7 +37,17 @@ function refreshUI() {
       refreshUI();
     }
   });
-  updateRawData(rawData, state);
+
+  // Renderiza a visão em tabela (legível)
+  if (subtasksTableContainer) {
+    renderSubtasksTable(subtasksTableContainer, state.subtasks, {
+      onRemove: (idx) => {
+        state.subtasks.splice(idx, 1);
+        saveState(state);
+        refreshUI();
+      }
+    });
+  }
 }
 
 refreshUI();
@@ -176,5 +186,6 @@ newSubtaskInput.addEventListener('keydown', (e) => {
 goalInput.addEventListener('input', () => {
   state.goal = goalInput.value;
   saveState(state);
-  updateRawData(rawData, state);
+  // atualiza UI apenas
+  // avoid heavy JSON rendering on each keystroke
 });
