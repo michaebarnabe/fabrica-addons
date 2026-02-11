@@ -58,14 +58,7 @@ const Home: NextPage = () => {
       {/* Addons Grid */}
       <section className="addons-section">
         <div className="container">
-          {/* Destaque para novo módulo, se presente */}
-          {addons.find(a => a.slug === 'divisor-de-objetivos') && (
-            <div className="addon-highlight">
-              <h3>Divisor de Objetivos — organize grandes metas em tarefas acionáveis</h3>
-              <p style={{marginTop:6}}>Escreva seu objetivo principal e gere uma estrutura de subtarefas prática, edite e salve localmente. Ideal para planejamento de projetos pequenos e médios, sem depender de APIs externas.</p>
-              <a href="/addons/divisor-de-objetivos/index.html" className="addon-cta" target="_blank" rel="noopener noreferrer">Abrir Divisor de Objetivos →</a>
-            </div>
-          )}
+          {/* Destaque removido conforme solicitado */}
           <h2>Explore Nossos Addons</h2>
 
           {addons.length > 0 ? (
@@ -87,7 +80,9 @@ const Home: NextPage = () => {
                       <i className={`bi ${getAddonIcon(addon.name)}`}></i>
                     </div>
                     <h5>{addon.name}</h5>
-                    <p>{addon.description}</p>
+                    {addon.slug !== 'divisor-de-objetivos' && (
+                      <p>{addon.description}</p>
+                    )}
                     <span className="addon-button">Usar Addon →</span>
                   </a>
                 ))}
