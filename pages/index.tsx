@@ -1,11 +1,28 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import { getAvailableAddons, getAddonIcon } from '@/lib/addons-loader'
+import { getAddonIcon } from '@/lib/addons-loader'
+import React, { useEffect, useState } from 'react'
 import { useAOS } from '@/lib/useAOS'
 
 const Home: NextPage = () => {
   useAOS()
-  const addons = getAvailableAddons();
+  const [addons, setAddons] = useState<any[]>([])
+
+  useEffect(() => {
+    let mounted = true
+    fetch('/api/addons')
+      .then(r => r.json())
+      .then(data => {
+        if (!mounted) return
+        setAddons(data)
+      })
+      .catch(() => {
+        if (!mounted) return
+        setAddons([])
+      })
+
+    return () => { mounted = false }
+  }, [])
 
   return (
     <>
