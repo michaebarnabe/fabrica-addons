@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bloco de Notas</title>
+
+<style>
+* {
+  box-sizing: border-box;
+  font-family: Consolas, "Courier New", monospace;
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  background: #f2f2f2;
+}
+
+/* SIDEBAR */
+#sidebar {
+  width: 20%;
+  min-width: 220px;
+  border-right: 1px solid #ccc;
+  padding: 10px;
+  background: #fafafa;
+  display: flex;
+  flex-direction: column;
+}
+
+#sidebar h2 {
+  margin: 0 0 6px 0;
+  font-size: 16px;
+}
+
+#search {
+  padding: 6px;
+  margin-bottom: 6px;
+}
+
+#importBtn {
+  margin-bottom: 6px;
+}
+
+#notesList {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.note-item {
+  padding: 6px;
+  border-bottom: 1px solid #eee;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.note-item:hover {
+  background: #e5e5e5;
+}
+
+.note-item.active {
+  background: #dcdcdc;
+  font-weight: bold;
+}
+
+/* EDITOR */
+#editor {
+  width: 80%;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+#title {
+  padding: 8px;
+  margin-bottom: 6px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-family: inherit;
+}
+
+#content {
+  flex: 1;
+  resize: none;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  line-height: 1.5;
+  font-family: inherit;
+}
+
+#actions {
+  margin-top: 6px;
+  display: flex;
+  gap: 4px;
+}
+
+button {
+  padding: 6px 10px;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  background: #fff;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+}
+
+button:hover {
+  background: #e5e5e5;
+}
+
+button:active {
+  background: #dcdcdc;
+}
+</style>
+</head>
+
+<body>
+
+<div id="sidebar">
+  <h2>Notas</h2>
+  <input id="search" placeholder="Buscar...">
+  <button id="importBtn">Importar TXT</button>
+  <div id="notesList"></div>
+</div>
+
+<div id="editor">
+  <input id="title" placeholder="Título">
+  <textarea id="content" placeholder="Escreva aqui..."></textarea>
+
+  <div id="actions">
+    <button onclick="newNote()">Novo</button>
+    <button onclick="saveNote()">Salvar</button>
+    <button onclick="deleteNote()">Excluir</button>
+  </div>
+</div>
+
+<script type="module" src="./index.js"></script>
+
+</body>
+</html>

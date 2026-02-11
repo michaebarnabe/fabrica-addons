@@ -1,0 +1,17 @@
+{
+  "name": "Bloco de Notas",
+  "version": "1.0.0",
+  "description": "Um bloco de notas simples e eficiente com armazenamento local usando IndexedDB",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "notas",
+    "bloco-de-notas",
+    "indexeddb",
+    "produtividade"
+  ],
+  "author": "Fabrica de Add-ons",
+  "license": "MIT"
+}
