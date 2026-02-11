@@ -1,0 +1,19 @@
+{
+  "name": "url-to-svg-qrcode-generator",
+  "version": "1.0.0",
+  "description": "A web add-on to generate customizable, non-expiring SVG QR Codes from URLs for websites, WhatsApp, etc.",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "qrcode",
+    "generator",
+    "svg",
+    "url",
+    "whatsapp"
+  ],
+  "author": "Fábrica de Add-ons",
+  "license": "MIT"
+}

@@ -1,0 +1,43 @@
+# Ambiente
+.env
+.env.local
+.env.*.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Sistema
+.DS_Store
+Thumbs.db
+*.log
+
+# Node (se usar no futuro)
+node_modules/
+npm-debug.log
+package-lock.json
+yarn.lock
+
+# Composer (se usar no futuro)
+vendor/
+composer.lock
+
+# Banco de dados
+*.sql
+*.sqlite
+*.db
+
+# Uploads/Temporários
+uploads/
+temp/
+tmp/
+cache/
+
+# Arquivos de backup
+*.bak
+*.backup
+*~
+.swp

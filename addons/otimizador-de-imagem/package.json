@@ -1,0 +1,15 @@
+{
+  "name": "image-optimizer-pro",
+  "version": "1.0.0",
+  "description": "A lightweight web tool to convert and compress images (JPG, PNG, HEIC) to WEBP or AVIF formats.",
+  "main": "index.js",
+  "keywords": [
+    "image-compression",
+    "webp",
+    "avif",
+    "heic",
+    "converter"
+  ],
+  "author": "Fabrica de Add-ons",
+  "license": "MIT"
+}

@@ -1,0 +1,18 @@
+{
+  "name": "vcf-qrcode-workflow-addon",
+  "version": "2.0.0",
+  "description": "A web add-on to create a .vcf contact file and then generate a QR Code from its public URL.",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "qrcode",
+    "generator",
+    "vcard",
+    "vcf"
+  ],
+  "author": "Fábrica de Add-ons",
+  "license": "MIT"
+}

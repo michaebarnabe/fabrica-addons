@@ -1,0 +1,6 @@
+{
+  "name": "Gerador de VCard",
+  "slug": "gerador-vcard",
+  "description": "Crie QR Codes de contato (vCard) com facilidade. Gere arquivos .vcf e transforme-os em QR Codes para compartilhar seus dados de contato.",
+  "is_premium": "0"
+}

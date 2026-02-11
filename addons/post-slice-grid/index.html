@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fábrica de Add-ons: Post Slice Grid</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: #333; max-width: 1200px; margin: 20px auto; padding: 0 15px; background-color: #f4f7f9; }
+        h1 { color: #1a1a1a; text-align: center; }
+        .container { display: grid; grid-template-columns: 300px 1fr; gap: 30px; }
+        .controls { background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        .preview-area, .results-area { background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        label { display: block; font-weight: bold; margin-top: 15px; margin-bottom: 5px; }
+        .control-group { display: flex; justify-content: space-between; align-items: center; }
+        .control-group label { margin-bottom: 0; }
+        .control-group span { font-weight: bold; color: #007bff; font-family: monospace; font-size: 14px; }
+        input[type="file"], input[type="number"], select, input[type="range"] { width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
+        input[type="range"] { padding: 0; }
+        button { display: block; width: 100%; padding: 12px; background-color: #007bff; color: white; border: none; border-radius: 4px; font-size: 16px; cursor: pointer; margin-top: 20px; transition: background-color 0.2s; }
+        button:hover { background-color: #0056b3; }
+        button:disabled { background-color: #ccc; cursor: not-allowed; }
+        #previewCanvas { border: 2px dashed #ccc; width: 100%; aspect-ratio: 1.91 / 1; background-color: #e9ecef; cursor: grab; }
+        #results { display: flex; flex-wrap: wrap; gap: 15px; margin-top: 20px; padding-top: 20px; border-top: 1px solid #eee;}
+        .result-item { text-align: center; }
+        .result-item canvas { border: 1px solid #ddd; max-width: 150px; height: auto; }
+        .result-item a { display: block; margin-top: 5px; font-size: 12px; }
+        #downloadZipButton { background-color: #28a745; display: none; }
+        #downloadZipButton:hover { background-color: #218838; }
+        .info { font-size: 12px; color: #666; }
+    </style>
+</head>
+<body>
+
+    <h1>Cortador de Imagens para Carrossel do Instagram</h1>
+
+    <div class="container">
+        <div class="controls">
+            <h2>1. Configurações</h2>
+            
+            <label for="imageLoader">Escolha uma imagem:</label>
+            <input type="file" id="imageLoader" accept="image/*">
+
+            <label for="slideCount">Quantidade de Slides:</label>
+            <input type="number" id="slideCount" value="3" min="2" max="10">
+            
+            <label for="aspectRatio">Formato do Post:</label>
+            <select id="aspectRatio">
+                <option value="1080/1350" data-width="1080" data-height="1350">Retrato (4:5) → 1080x1350 px</option>
+                <option value="1080/1080" data-width="1080" data-height="1080">Quadrado (1:1) → 1080x1080 px</option>
+                <option value="1080/566" data-width="1080" data-height="566">Paisagem (1.91:1) → 1080x566 px</option>
+            </select>
+            
+            <div class="control-group">
+                <label for="zoom">Zoom:</label>
+                <span id="zoomValue">100%</span>
+            </div>
+            <input type="range" id="zoom" min="0.1" max="3" step="0.05" value="1">
+
+            <div class="control-group">
+                <label for="angle">Ângulo:</label>
+                <span id="angleValue">0°</span>
+            </div>
+            <input type="range" id="angle" min="-45" max="45" step="1" value="0">
+            
+            <button id="splitButton" disabled>Cortar e Visualizar</button>
+            <p class="info">Após escolher uma imagem, ajuste-a na área de preview arrastando com o mouse.</p>
+        </div>
+        
+        <div class="main-content">
+            <div class="preview-area">
+                <h2>2. Ajuste a Imagem</h2>
+                <canvas id="previewCanvas" width="955" height="500"></canvas>
+            </div>
+
+            <div class="results-area">
+                <h2>3. Resultado</h2>
+                <div id="results">
+                    <p>A prévia dos seus slides aparecerá aqui.</p>
+                </div>
+                 <button id="downloadZipButton">Baixar Tudo como .ZIP</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="index.js" type="module"></script>
+
+</body>
+</html>

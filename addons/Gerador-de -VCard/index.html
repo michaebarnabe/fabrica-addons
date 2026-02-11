@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerador de QR Code vCard - Fluxo de Trabalho</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background-color: #f0f2f5; display: flex; justify-content: center; align-items: flex-start; padding: 2rem; }
+        .container { background-color: white; padding: 2.5rem; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); width: 90%; max-width: 600px; }
+        h1 { color: #1c1e21; text-align: center; margin-bottom: 2rem; }
+        .step { margin-bottom: 2.5rem; border-top: 1px solid #dddfe2; padding-top: 2rem; }
+        .step:first-child { border-top: none; padding-top: 0; }
+        h2 { color: #1877f2; margin-bottom: 1rem; }
+        label { display: block; font-weight: bold; margin-bottom: 0.5rem; color: #606770; }
+        textarea, input[type="text"] { width: 100%; padding: 0.7rem; border: 1px solid #dddfe2; border-radius: 6px; font-size: 14px; box-sizing: border-box; }
+        textarea { height: 220px; resize: vertical; }
+        .input-group { margin-bottom: 1rem; }
+        button { background-color: #1877f2; color: white; border: none; padding: 0.8rem 1.5rem; border-radius: 6px; font-size: 1rem; font-weight: bold; cursor: pointer; transition: background-color 0.3s; width: 100%; }
+        button:hover { background-color: #166fe5; }
+        .info { font-size: 0.9rem; color: #606770; margin-top: 1rem; }
+        #qrcode-result { text-align: center; }
+        #qrcode-container { margin-top: 1.5rem; display: flex; justify-content: center; align-items: center; min-height: 256px; }
+        #download-link { display: none; margin-top: 1rem; background-color: #42b72a; color: white; padding: 0.7rem 1.2rem; border-radius: 6px; text-decoration: none; font-weight: bold; transition: background-color 0.3s; }
+        #download-link:hover { background-color: #36a420; }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Gerador de QR Code vCard</h1>
+
+        <div class="step">
+            <h2>Passo 1: Crie e Salve seu Arquivo .vcf</h2>
+            <div class="input-group">
+                <label for="vcard-textarea">Conteúdo do vCard:</label>
+                <textarea id="vcard-textarea" placeholder="Cole o conteúdo completo do seu vCard aqui...">BEGIN:VCARD
+VERSION:3.0
+FN:Ana Lucia Pinto
+N:Pinto;Ana Lucia;;;
+ORG:Ana Lucia Pinto
+TITLE:Designer de Interiores
+TEL;TYPE=CELL:+5511916118322
+EMAIL:analucia@analuciadesigner.com.br
+ADR;TYPE=WORK:;;Av. Pedroso de Morais, 2548;Pinheiros;São Paulo;05420-002;Brasil
+URL:https://analuciadesigner.com.br/
+PHOTO;VALUE=URI;TYPE=JPEG:https://core.flyupweb.com.br/baseCliente/images/104/logos/photo-analucia-vcard.jpg
+X-SOCIALPROFILE;TYPE=instagram:https://www.instagram.com/analuciadesigner/
+X-SOCIALPROFILE;TYPE=facebook:https://www.facebook.com/analuciapintosp/
+X-SOCIALPROFILE;TYPE=pinterest:https://br.pinterest.com/analuciapintodesigner/
+X-SOCIALPROFILE;TYPE=linkedin:https://www.linkedin.com/in/analuciadesigner/
+END:VCARD</textarea>
+            </div>
+            <div class="input-group">
+                <label for="vcf-filename-input">Nome do Arquivo:</label>
+                <input type="text" id="vcf-filename-input" value="contato.vcf">
+            </div>
+            <button id="save-vcf-btn">1. Salvar como .vcf</button>
+        </div>
+
+        <div class="step">
+            <h2>Passo 2: Gere o QR Code a partir do Link</h2>
+            <p class="info">Após salvar o arquivo .vcf, faça o upload dele para o seu site e cole o link público abaixo.</p>
+            <div class="input-group">
+                <label for="url-input">URL pública do seu arquivo .vcf:</label>
+                <input type="text" id="url-input" placeholder="https://seusite.com.br/contato.vcf">
+            </div>
+            <button id="generate-qr-btn">2. Gerar QR Code</button>
+            <div id="qrcode-result">
+                <div id="qrcode-container"></div>
+                <a id="download-link" href="#">Baixar Imagem (PNG)</a>
+            </div>
+        </div>
+    </div>
+
+    <script type="module">
+        import { saveVcfFile, generateQRCode } from './index.js';
+
+        // --- Lógica para o Passo 1 ---
+        const saveVcfBtn = document.getElementById('save-vcf-btn');
+        const vcardTextarea = document.getElementById('vcard-textarea');
+        const vcfFilenameInput = document.getElementById('vcf-filename-input');
+
+        saveVcfBtn.addEventListener('click', () => {
+            saveVcfFile(vcardTextarea.value, vcfFilenameInput.value);
+        });
+
+        // --- Lógica para o Passo 2 ---
+        const generateQrBtn = document.getElementById('generate-qr-btn');
+        const urlInput = document.getElementById('url-input');
+        const qrcodeContainer = document.getElementById('qrcode-container');
+        const downloadLink = document.getElementById('download-link');
+
+        generateQrBtn.addEventListener('click', () => {
+            generateQRCode(urlInput.value, qrcodeContainer, downloadLink);
+        });
+    </script>
+
+</body>
+</html>
