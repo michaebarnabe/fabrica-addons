@@ -16,11 +16,18 @@ button.danger { border-color: #f3b0b0; }
 .subtask .remove { background: #fff; border-color: #f3b0b0; }
 .add-row { display: flex; gap: 8px; margin-top: 10px; }
 #raw-data { white-space: pre-wrap; background:#f7f8fb; padding:8px; border-radius:6px; border:1px dashed #e6e9f3; }
-.table-wrap { overflow:auto; }
-.subtasks-table { width:100%; border-collapse: collapse; }
-.subtasks-table thead th { text-align:left; padding:10px; background:#fbfcff; border-bottom:1px solid #eef0f7; }
-.subtasks-table td { vertical-align:top; padding:10px; border-bottom:1px solid #f1f4fb; }
-.subtasks-table .task-text { white-space: normal; word-break: break-word; }
-.subtasks-table .action-btn { padding:6px 8px; border-radius:6px; border:1px solid #d7dbe8; background:#fff; cursor:pointer; }
+.table-wrap { overflow:auto; padding:6px 2px; }
+.subtasks-table { width:100%; border-collapse: collapse; font-family: inherit; }
+.subtasks-table thead th { text-align:left; padding:12px; background: linear-gradient(180deg,#fbfcff,#f7f9ff); border-bottom:1px solid #eef0f7; font-weight:600; }
+.subtasks-table td { vertical-align:top; padding:12px; border-bottom:1px solid #f1f4fb; }
+.subtasks-table .task-text { white-space: normal; word-break: break-word; font-size:14px; line-height:1.4; color:#222; }
+.subtasks-table tbody tr:nth-child(odd) { background: #ffffff; }
+.subtasks-table tbody tr:nth-child(even) { background: #fbfcff; }
+.subtasks-table tbody tr:hover { background: #eef4ff; }
+.subtasks-table .action-btn { padding:8px 10px; border-radius:6px; border:1px solid #d7dbe8; background:#fff; cursor:pointer; font-size:13px; }
+.subtasks-table .action-btn.remove { border-color:#ffb6b6; color:#a00; }
+
+/* Make the final block span both columns for more horizontal space */
+.block.full { grid-column: 1 / -1; }
 
 @media (max-width: 820px) { .container { grid-template-columns: 1fr; } }
