@@ -1,7 +1,6 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import { getAvailableAddons, getAddonIcon } from '@/lib/addons-loader'
-import '@/styles/globals.css'
 
 const Home: NextPage = () => {
   const addons = getAvailableAddons();
