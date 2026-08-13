@@ -100,52 +100,53 @@ document.addEventListener('DOMContentLoaded', () => {
             
             const sliceW = parseInt(selectedOption.dataset.width, 10);
             const sliceH = parseInt(selectedOption.dataset.height, 10);
-            const rows = 1; // Carousel is horizontal
-            const cols = slideCount;
             
-            const totalTargetW = sliceW * cols;
-            const totalTargetH = sliceH * rows;
+            const totalWidth = sliceW * slideCount;
+            const totalHeight = sliceH; // It's a horizontal carousel
             
-            // Cálculo de Object-Fit: Cover
-            const imgRatio = sourceImage.width / sourceImage.height;
-            const targetRatio = totalTargetW / totalTargetH;
+            // Recalcular as dimensões da guia de corte exatamente como no preview
+            const canvasWidth = previewCanvas.width;
+            const canvasHeight = previewCanvas.height;
+            const totalAspectRatio = totalWidth / totalHeight;
             
-            let drawW, drawH, drawOffsetX, drawOffsetY;
-            if (imgRatio > targetRatio) {
-                drawH = totalTargetH;
-                drawW = totalTargetH * imgRatio;
-                drawOffsetX = (totalTargetW - drawW) / 2;
-                drawOffsetY = 0;
-            } else {
-                drawW = totalTargetW;
-                drawH = totalTargetW / imgRatio;
-                drawOffsetX = 0;
-                drawOffsetY = (totalTargetW - drawH) / 2;
+            let guideWidth = canvasWidth;
+            let guideHeight = canvasWidth / totalAspectRatio;
+
+            if (guideHeight > canvasHeight) {
+                guideHeight = canvasHeight;
+                guideWidth = canvasHeight * totalAspectRatio;
             }
 
-            // Aplicar o zoom e pan definidos pelo usuário caso ele queira,
-            // senão ele já estaria no modo cover.
-            // Para manter a funcionalidade do drag/zoom:
-            // O drag modifica offsetX, offsetY. O zoom modifica o zoom.
-            // Aqui podemos aplicar o cover base, e adicionar as modificações do usuário:
+            const startX = (canvasWidth - guideWidth) / 2;
+            const startY = (canvasHeight - guideHeight) / 2;
             
+            // Fator de escala entre o preview e a imagem final
+            const scaleRatio = totalWidth / guideWidth;
+            
+            // Desenhar na imagem offscreen com a mesma transformação do preview
+            const offscreenCanvas = document.createElement('canvas');
+            offscreenCanvas.width = totalWidth;
+            offscreenCanvas.height = totalHeight;
+            const offscreenCtx = offscreenCanvas.getContext('2d');
+            
+            offscreenCtx.save();
+            offscreenCtx.translate(-startX * scaleRatio, -startY * scaleRatio);
+            offscreenCtx.scale(scaleRatio, scaleRatio);
+            offscreenCtx.translate(canvasWidth / 2 + offsetX, canvasHeight / 2 + offsetY);
+            offscreenCtx.rotate(angle * Math.PI / 180);
+            offscreenCtx.scale(zoom, zoom);
+            offscreenCtx.drawImage(sourceImage, -sourceImage.width / 2, -sourceImage.height / 2);
+            offscreenCtx.restore();
+
             resultsDiv.innerHTML = '';
             
-            for (let i = 0; i < cols; i++) {
+            for (let i = 0; i < slideCount; i++) {
                 const outputCanvas = document.createElement('canvas');
                 outputCanvas.width = sliceW;
                 outputCanvas.height = sliceH;
                 const outputCtx = outputCanvas.getContext('2d');
                 
-                // Mapeia do cover base para a imagem original
-                const srcX = (i * sliceW - drawOffsetX) * (sourceImage.width / drawW);
-                const srcY = (-drawOffsetY) * (sourceImage.height / drawH);
-                const srcW = sliceW * (sourceImage.width / drawW);
-                const srcH = sliceH * (sourceImage.height / drawH);
-                
-                // Aplicar offset do usuário se desejado (simplificado aqui para usar apenas o cover se houver conflito)
-                // Usaremos a lógica exata pedida na etapa 2:
-                outputCtx.drawImage(sourceImage, srcX, srcY, srcW, srcH, 0, 0, sliceW, sliceH);
+                outputCtx.drawImage(offscreenCanvas, i * sliceW, 0, sliceW, sliceH, 0, 0, sliceW, sliceH);
                 
                 const resultItem = document.createElement('div');
                 resultItem.className = 'result-item';
