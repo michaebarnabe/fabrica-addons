@@ -1,0 +1,9 @@
+{
+  "name": "Minificador e Formatador JSON",
+  "short_name": "FormatJSON",
+  "description": "Formatador e validador leve de arquivos JSON.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#000000"
+}

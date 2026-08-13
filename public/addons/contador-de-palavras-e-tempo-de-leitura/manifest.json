@@ -1,0 +1,9 @@
+{
+  "name": "Contador de Palavras e Tempo de Leitura",
+  "short_name": "Contador",
+  "description": "Contagem em tempo real e tempo estimado.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#000000"
+}

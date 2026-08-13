@@ -1,0 +1,9 @@
+{
+  "name": "Calculadora de Hora Freelance",
+  "short_name": "CalcHora",
+  "description": "Calculadora financeira para profissionais autônomos.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#000000"
+}

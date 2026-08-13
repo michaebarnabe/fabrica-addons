@@ -1,0 +1,11 @@
+{
+  "name": "contador-de-palavras-e-tempo-de-leitura",
+  "version": "1.0.0",
+  "description": "Contagem em tempo real e tempo estimado.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

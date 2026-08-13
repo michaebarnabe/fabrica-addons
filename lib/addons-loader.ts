@@ -48,6 +48,46 @@ export function getAvailableAddons(): Addon[] {
       is_premium: "0",
       path: "/addons/Gerador-de-QRrCode",
       folder: "Gerador-de-QRrCode"
+    },
+    {
+      name: "Limpador e Formatador de Texto",
+      slug: "limpador-e-formatador-de-texto",
+      description: "Utilitário para higienização rápida de textos.",
+      is_premium: "0",
+      path: "/addons/limpador-e-formatador-de-texto",
+      folder: "limpador-e-formatador-de-texto"
+    },
+    {
+      name: "Contador de Palavras e Tempo de Leitura",
+      slug: "contador-de-palavras-e-tempo-de-leitura",
+      description: "Contagem em tempo real de caracteres, palavras e estimativa de tempo de leitura.",
+      is_premium: "0",
+      path: "/addons/contador-de-palavras-e-tempo-de-leitura",
+      folder: "contador-de-palavras-e-tempo-de-leitura"
+    },
+    {
+      name: "Calculadora de Hora Freelance",
+      slug: "calculadora-de-hora-freelance",
+      description: "Calculadora financeira para profissionais autônomos descobrirem o valor da sua hora.",
+      is_premium: "0",
+      path: "/addons/calculadora-de-hora-freelance",
+      folder: "calculadora-de-hora-freelance"
+    },
+    {
+      name: "Gerador de Links WhatsApp e UTMs",
+      slug: "gerador-de-links-whatsapp-e-utms",
+      description: "Utilitário para marketing e atendimento rápido com criação de link wa.me e UTMs.",
+      is_premium: "0",
+      path: "/addons/gerador-de-links-whatsapp-e-utms",
+      folder: "gerador-de-links-whatsapp-e-utms"
+    },
+    {
+      name: "Minificador e Formatador JSON",
+      slug: "minificador-e-formatador-json",
+      description: "Formatador e validador leve de arquivos e estruturas JSON com visualização em árvore.",
+      is_premium: "0",
+      path: "/addons/minificador-e-formatador-json",
+      folder: "minificador-e-formatador-json"
     }
   ];
 

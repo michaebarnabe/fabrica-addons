@@ -3,10 +3,12 @@ import Head from 'next/head'
 import { getAddonIcon } from '@/lib/addons-loader'
 import React, { useEffect, useState } from 'react'
 import { useAOS } from '@/lib/useAOS'
+import { DonationModal } from '@/components/DonationModal'
 
 const Home: NextPage = () => {
   useAOS()
   const [addons, setAddons] = useState<any[]>([])
+  const [isDonationModalOpen, setIsDonationModalOpen] = useState(false)
 
   useEffect(() => {
     let mounted = true
@@ -43,6 +45,10 @@ const Home: NextPage = () => {
           </a>
           <span className="navbar-text">
             Desenvolvido por <a href="https://michaelbarnabe.site" target="_blank" rel="noopener noreferrer">michaelbarnabe.site</a>
+            <button className="btn-support" onClick={() => setIsDonationModalOpen(true)}>
+              <i className="bi bi-heart-fill" style={{ color: '#ff4d4d', marginRight: '5px' }}></i>
+              Apoie o Projeto
+            </button>
           </span>
         </div>
       </nav>
@@ -101,6 +107,11 @@ const Home: NextPage = () => {
           <small>Todos os direitos reservados.</small>
         </div>
       </footer>
+
+      <DonationModal 
+        isOpen={isDonationModalOpen} 
+        onClose={() => setIsDonationModalOpen(false)} 
+      />
     </>
   )
 }

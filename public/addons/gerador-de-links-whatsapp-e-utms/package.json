@@ -1,0 +1,11 @@
+{
+  "name": "gerador-de-links-whatsapp-e-utms",
+  "version": "1.0.0",
+  "description": "Utilitário para marketing e atendimento rápido.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

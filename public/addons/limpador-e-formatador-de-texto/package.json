@@ -1,0 +1,11 @@
+{
+  "name": "limpador-e-formatador-de-texto",
+  "version": "1.0.0",
+  "description": "Utilitário para higienização rápida de textos.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

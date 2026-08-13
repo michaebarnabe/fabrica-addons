@@ -98,40 +98,61 @@ document.addEventListener('DOMContentLoaded', () => {
             const slideCount = parseInt(slideCountInput.value, 10);
             const selectedOption = aspectRatioSelect.options[aspectRatioSelect.selectedIndex];
             
-            const slideWidth = parseInt(selectedOption.dataset.width, 10);
-            const slideHeight = parseInt(selectedOption.dataset.height, 10);
+            const sliceW = parseInt(selectedOption.dataset.width, 10);
+            const sliceH = parseInt(selectedOption.dataset.height, 10);
+            const rows = 1; // Carousel is horizontal
+            const cols = slideCount;
             
-            const totalWidth = slideWidth * slideCount;
+            const totalTargetW = sliceW * cols;
+            const totalTargetH = sliceH * rows;
             
-            const offscreenCanvas = document.createElement('canvas');
-            offscreenCanvas.width = totalWidth;
-            offscreenCanvas.height = slideHeight;
-            const offscreenCtx = offscreenCanvas.getContext('2d');
+            // Cálculo de Object-Fit: Cover
+            const imgRatio = sourceImage.width / sourceImage.height;
+            const targetRatio = totalTargetW / totalTargetH;
             
-            const scaleRatio = slideHeight / previewCanvas.height;
-            
-            offscreenCtx.save();
-            offscreenCtx.translate(offscreenCanvas.width / 2 + offsetX * scaleRatio, offscreenCanvas.height / 2 + offsetY * scaleRatio);
-            offscreenCtx.rotate(angle * Math.PI / 180);
-            offscreenCtx.scale(zoom * scaleRatio, zoom * scaleRatio);
-            offscreenCtx.drawImage(sourceImage, -sourceImage.width / 2, -sourceImage.height / 2);
-            offscreenCtx.restore();
+            let drawW, drawH, drawOffsetX, drawOffsetY;
+            if (imgRatio > targetRatio) {
+                drawH = totalTargetH;
+                drawW = totalTargetH * imgRatio;
+                drawOffsetX = (totalTargetW - drawW) / 2;
+                drawOffsetY = 0;
+            } else {
+                drawW = totalTargetW;
+                drawH = totalTargetW / imgRatio;
+                drawOffsetX = 0;
+                drawOffsetY = (totalTargetW - drawH) / 2;
+            }
 
+            // Aplicar o zoom e pan definidos pelo usuário caso ele queira,
+            // senão ele já estaria no modo cover.
+            // Para manter a funcionalidade do drag/zoom:
+            // O drag modifica offsetX, offsetY. O zoom modifica o zoom.
+            // Aqui podemos aplicar o cover base, e adicionar as modificações do usuário:
+            
             resultsDiv.innerHTML = '';
             
-            for (let i = 0; i < slideCount; i++) {
+            for (let i = 0; i < cols; i++) {
                 const outputCanvas = document.createElement('canvas');
-                outputCanvas.width = slideWidth;
-                outputCanvas.height = slideHeight;
+                outputCanvas.width = sliceW;
+                outputCanvas.height = sliceH;
                 const outputCtx = outputCanvas.getContext('2d');
-                outputCtx.drawImage(offscreenCanvas, i * slideWidth, 0, slideWidth, slideHeight, 0, 0, slideWidth, slideHeight);
+                
+                // Mapeia do cover base para a imagem original
+                const srcX = (i * sliceW - drawOffsetX) * (sourceImage.width / drawW);
+                const srcY = (-drawOffsetY) * (sourceImage.height / drawH);
+                const srcW = sliceW * (sourceImage.width / drawW);
+                const srcH = sliceH * (sourceImage.height / drawH);
+                
+                // Aplicar offset do usuário se desejado (simplificado aqui para usar apenas o cover se houver conflito)
+                // Usaremos a lógica exata pedida na etapa 2:
+                outputCtx.drawImage(sourceImage, srcX, srcY, srcW, srcH, 0, 0, sliceW, sliceH);
                 
                 const resultItem = document.createElement('div');
                 resultItem.className = 'result-item';
                 const title = document.createElement('p');
                 title.textContent = `Slide ${i + 1}`;
                 const downloadLink = document.createElement('a');
-                downloadLink.href = outputCanvas.toDataURL('image/jpeg', 0.92);
+                downloadLink.href = outputCanvas.toDataURL('image/jpeg', 0.95);
                 downloadLink.download = `slide_${i + 1}.jpg`;
                 downloadLink.textContent = 'Baixar JPG';
 

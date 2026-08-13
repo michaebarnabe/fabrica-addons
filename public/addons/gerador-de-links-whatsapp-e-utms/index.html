@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerador de Links WhatsApp e UTMs</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: #333; max-width: 800px; margin: 20px auto; padding: 0 15px; background-color: #f4f7f9; }
+        h1 { color: #1a1a1a; text-align: center; }
+        .card { background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); margin-bottom: 20px; }
+        label { display: block; margin-top: 15px; font-weight: bold; }
+        input, textarea { width: 100%; padding: 10px; margin-top: 5px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
+        .result-box { display: flex; align-items: stretch; margin-top: 20px; }
+        .result-box input { flex-grow: 1; background: #e9ecef; border: 1px solid #ced4da; margin-top: 0; border-radius: 4px 0 0 4px; cursor: text; }
+        .result-box button { background: #28a745; color: #fff; border: none; padding: 10px 20px; cursor: pointer; border-radius: 0 4px 4px 0; font-weight: bold; transition: background 0.2s; }
+        .result-box button:hover { background: #218838; }
+        .optional { color: #6c757d; font-size: 0.9em; font-weight: normal; }
+    </style>
+</head>
+<body>
+    <h1>Gerador de Link WhatsApp</h1>
+    
+    <div class="card">
+        <label for="phone">Número de WhatsApp <span class="optional">(com DDD, sem formatação)</span></label>
+        <input type="text" id="phone" placeholder="Ex: 5511999999999">
+        
+        <label for="message">Mensagem Padrão <span class="optional">(Opcional)</span></label>
+        <textarea id="message" rows="4" placeholder="Ex: Olá! Gostaria de um orçamento..."></textarea>
+        
+        <h3 style="margin-top:30px; border-top:1px solid #eee; padding-top:20px;">Adicionar UTMs <span class="optional">(Google Analytics - Opcional)</span></h3>
+        <label for="utm_source">utm_source <span class="optional">(Origem. Ex: instagram)</span></label>
+        <input type="text" id="utm_source" placeholder="instagram">
+        
+        <label for="utm_medium">utm_medium <span class="optional">(Mídia. Ex: social, cpc)</span></label>
+        <input type="text" id="utm_medium" placeholder="social">
+        
+        <label for="utm_campaign">utm_campaign <span class="optional">(Campanha. Ex: promo_verao)</span></label>
+        <input type="text" id="utm_campaign" placeholder="promo_verao">
+        
+        <div class="result-box">
+            <input type="text" id="resultLink" readonly placeholder="O link gerado aparecerá aqui">
+            <button id="copyBtn">Copiar</button>
+        </div>
+    </div>
+
+    <script src="index.js" type="module"></script>
+</body>
+</html>

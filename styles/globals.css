@@ -234,3 +234,140 @@ a {
     grid-template-columns: 1fr;
   }
 }
+
+/* Modal */
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: rgba(0,0,0,0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  padding: 1rem;
+}
+
+.modal-content {
+  background: #ffffff;
+  border: 2px solid #000000;
+  width: 100%;
+  max-width: 500px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  border-bottom: 2px solid #000000;
+  background: #f0f0f0;
+}
+
+.modal-header h3 {
+  margin: 0;
+  font-size: 1.25rem;
+}
+
+.modal-close {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.modal-body {
+  padding: 1.5rem;
+}
+
+.modal-body p {
+  margin-bottom: 1.5rem;
+  font-size: 0.95rem;
+}
+
+.donation-option {
+  margin-bottom: 1.5rem;
+}
+
+.donation-option h4 {
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.copy-box {
+  display: flex;
+  align-items: stretch;
+  border: 2px solid #000000;
+  background: #f9f9f9;
+}
+
+.copy-box code {
+  flex-grow: 1;
+  padding: 0.75rem;
+  font-size: 0.85rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.btn-copy {
+  background: #000000;
+  color: #ffffff;
+  border: none;
+  padding: 0 1rem;
+  cursor: pointer;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  transition: background 0.2s;
+}
+
+.btn-copy:hover {
+  background: #333333;
+}
+
+.platforms-links {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.platform-btn {
+  flex: 1;
+  text-align: center;
+  padding: 0.75rem;
+  border: 2px solid #000000;
+  color: #000000;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.platform-btn:hover {
+  background: #000000;
+  color: #ffffff;
+}
+
+/* Navbar Support Button */
+.btn-support {
+  background-color: #000000;
+  color: #ffffff;
+  border: 2px solid #000000;
+  padding: 0.4rem 1rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-left: 1rem;
+}
+
+.btn-support:hover {
+  background-color: #ffffff;
+  color: #000000;
+}

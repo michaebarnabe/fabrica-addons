@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Hora Freelance</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: #333; max-width: 800px; margin: 20px auto; padding: 0 15px; background-color: #f4f7f9; }
+        h1 { color: #1a1a1a; text-align: center; }
+        .card { background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); margin-bottom: 20px; }
+        label { display: block; margin-top: 15px; font-weight: bold; }
+        input { width: 100%; padding: 10px; margin-top: 5px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
+        .result { text-align: center; padding: 20px; background: #000; color: #fff; border-radius: 8px; }
+        .result h2 { margin: 0; font-size: 2.5rem; color: #00ff88; }
+        .result p { margin: 5px 0 0 0; font-size: 1.2rem; }
+    </style>
+</head>
+<body>
+    <h1>Calculadora de Valor Hora</h1>
+    
+    <div class="card">
+        <label for="custos">Custos Fixos Mensais (R$)</label>
+        <input type="number" id="custos" placeholder="Ex: 2500" value="2500">
+        
+        <label for="diasSemana">Dias trabalhados por semana</label>
+        <input type="number" id="diasSemana" placeholder="Ex: 5" value="5">
+        
+        <label for="horasDia">Horas por dia</label>
+        <input type="number" id="horasDia" placeholder="Ex: 8" value="8">
+        
+        <label for="ferias">Dias de férias/folga no ano</label>
+        <input type="number" id="ferias" placeholder="Ex: 30" value="30">
+        
+        <label for="lucro">Margem de Lucro (%)</label>
+        <input type="number" id="lucro" placeholder="Ex: 20" value="20">
+    </div>
+
+    <div class="result">
+        <p>Seu valor/hora ideal é:</p>
+        <h2 id="valorHora">R$ 0,00</h2>
+        <p id="faturamento">Faturamento Mínimo Necessário: R$ 0,00</p>
+    </div>
+
+    <script src="index.js" type="module"></script>
+</body>
+</html>

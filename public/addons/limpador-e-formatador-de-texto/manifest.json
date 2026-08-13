@@ -1,0 +1,9 @@
+{
+  "name": "Limpador e Formatador de Texto",
+  "short_name": "FormatadorTexto",
+  "description": "Utilitário para higienização rápida de textos.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#000000"
+}

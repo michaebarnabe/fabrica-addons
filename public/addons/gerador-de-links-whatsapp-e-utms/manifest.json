@@ -1,0 +1,9 @@
+{
+  "name": "Gerador de Links WhatsApp e UTMs",
+  "short_name": "GeradorWA",
+  "description": "Utilitário para marketing e atendimento rápido.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#000000"
+}

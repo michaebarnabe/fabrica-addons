@@ -1,0 +1,11 @@
+{
+  "name": "minificador-e-formatador-json",
+  "version": "1.0.0",
+  "description": "Formatador e validador leve de arquivos JSON.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
