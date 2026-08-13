@@ -45,3 +45,5 @@ cache/
 *.bak
 *.backup
 
+# Arquivos locais / documentação IA
+ROADMAP_IA_FABRICA_ADDONS.md
